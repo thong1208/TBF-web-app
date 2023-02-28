@@ -1,4 +1,10 @@
 <script>
+  /**
+     * @type {{ countries: any; }}
+     */
+   export let data;
+    let { countries } = data;
+    $: ({ countries } = data);
   import Components from "./Components.svelte";
   import Components2 from "./Components2.svelte";
   import Components3 from "./Components3.svelte";
@@ -79,7 +85,11 @@
 
 
 <body>
-  
+  <ul>
+    {#each countries as country}
+      <li>{country.name}</li>
+    {/each}
+  </ul>
   
  <div>
   <Tbf/>
