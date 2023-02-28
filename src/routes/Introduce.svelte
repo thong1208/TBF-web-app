@@ -72,7 +72,7 @@
     <section class="about-us">
         <div class="detail">
             <div><p> BIM the</p></div>
-            <div> <p>rigth way.</p> </div>
+            <div> <p>right way.</p> </div>
            
         </div>
         <div class="image">
