@@ -1,10 +1,5 @@
 <script>
-  /**
-     * @type {{ countries: any; }}
-     */
-   export let data;
-    let { countries } = data;
-    $: ({ countries } = data);
+  import supabase from "../supabaseClient";
   import Components from "./Components.svelte";
   import Components2 from "./Components2.svelte";
   import Components3 from "./Components3.svelte";
@@ -15,10 +10,24 @@
   import Tbf from "./TBF.svelte";
   import Introduce from "./Introduce.svelte";
   // import Hieuung from "./Hieuung.svelte";
+  
+  export const LoadData = async () => {
+    const {data, error} = await supabase.from('test').select();
+
+    if(error) {
+      return console.error(error);
+    }
+
+    return data
+  }
+
+
 </script>
 
+
 <head>
-  <title> TẬP LÀM WEB</title>
+  
+  <title> TBF Web App</title>
   <script src="https://kit.fontawesome.com/a076d05399.js" ></script>
 </head>
 
@@ -85,13 +94,9 @@
 
 
 <body>
-  <ul>
-    {#each countries as country}
-      <li>{country.name}</li>
-    {/each}
-  </ul>
   
  <div>
+  <p>{LoadData}</p>
   <Tbf/>
     <!-- <Headermenu/> -->
  </div>
@@ -106,5 +111,6 @@
   </ul>
 </div>
   <!-- <Hieuung/> -->
+  
 
 </body>
